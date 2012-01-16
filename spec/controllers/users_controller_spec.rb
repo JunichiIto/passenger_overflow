@@ -5,6 +5,7 @@ describe UsersController do
 
   describe "GET 'index'" do
     before :each do
+      @user = Factory :user 
       get 'index'
     end
 
@@ -20,8 +21,7 @@ describe UsersController do
 
     describe "when signed in" do
       before :each do
-        user = Factory :user 
-        test_sign_in user 
+        test_sign_in @user 
       end
       it "should have sign out link" do
         get 'index'
