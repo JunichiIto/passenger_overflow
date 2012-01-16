@@ -5,15 +5,25 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<% if current_user %>
-  <%= current_user.name %> <%= link_to 'Sign Out', logout_path %>
-<% else %>
-  <%= link_to 'Sign in with Twitter', '/auth/twitter' %>
-<% end %>
-<h1>Passenger Overflow</h1>
-<%= yield %>
+<div id="header">
+  <div id="auth">
+    <% if current_user %>
+      <%= current_user.name %> <%= link_to 'Sign Out', logout_path %>
+    <% else %>
+      <%= link_to 'Sign in with Twitter', '/auth/twitter' %>
+    <% end %>
+  </div>
+  <div id="sitename">
+    <%= image_tag 'site_icon.jpg' %>
+    <h1>Passenger Overflow</h1>
+  </div>
+</div>
+<div id="content">
+  <%= yield %>
+</div>
 
 </body>
 </html>
